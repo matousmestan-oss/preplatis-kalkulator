@@ -1,0 +1,245 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ffffff;color:#1a1a1a;font-family:'DM Sans',sans-serif;font-size:15px}
+.wrap{max-width:700px;margin:0 auto;padding:36px 24px 60px}
+.eyebrow{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
+.headline{font-family:'Syne',sans-serif;font-size:clamp(24px,5vw,36px);font-weight:800;line-height:1.1;margin-bottom:6px;color:#111}
+.headline span{color:#c8372d}
+.sub{font-size:13px;color:#aaa;font-weight:300;margin-bottom:32px}
+.inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px}
+@media(max-width:520px){.inputs{grid-template-columns:1fr}}
+.input-group{background:#f8f8f8;border:0.5px solid #e8e8e8;border-radius:6px;padding:16px}
+.input-group:focus-within{border-color:#ccc}
+.input-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#aaa;margin-bottom:8px}
+.input-row{display:flex;align-items:center;gap:6px}
+.input-unit{font-size:13px;color:#ccc;flex-shrink:0}
+input[type=number]{background:transparent;border:none;outline:none;color:#111;font-family:'Syne',sans-serif;font-size:18px;font-weight:700;width:100%;-moz-appearance:textfield}
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+input[type=range]{width:100%;margin-top:8px;accent-color:#c8372d}
+.slider-row{display:flex;justify-content:space-between;font-size:11px;color:#ccc;margin-top:6px}
+.hero{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px}
+@media(max-width:520px){.hero{grid-template-columns:1fr 1fr}}
+.hero-box{background:#f8f8f8;border:0.5px solid #e8e8e8;border-radius:6px;padding:16px}
+.hero-box.diff{border-color:rgba(200,55,45,0.3);background:#fff5f4}
+.hb-label{font-size:11px;text-transform:uppercase;letter-spacing:0.09em;color:#aaa;margin-bottom:6px}
+.hb-val{font-family:'Syne',sans-serif;font-size:clamp(16px,3.5vw,24px);font-weight:800;line-height:1}
+.hb-val.red{color:#c8372d}
+.hb-val.green{color:#2d8a5a}
+.hb-sub{font-size:11px;color:#bbb;margin-top:4px;font-weight:300}
+.chart-card{background:#f8f8f8;border:0.5px solid #e8e8e8;border-radius:6px;padding:20px;margin-bottom:28px}
+.chart-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.chart-card-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#111}
+.legend{display:flex;gap:20px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#888}
+.legend-dot{width:12px;height:3px;border-radius:2px;flex-shrink:0}
+.chart-finals{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.cf-box{padding:10px 14px;border-radius:4px}
+.cf-box.bad{background:#fff0ef;border:0.5px solid rgba(200,55,45,0.2)}
+.cf-box.good{background:#f0faf4;border:0.5px solid rgba(45,138,90,0.2)}
+.cf-label{font-size:11px;color:#aaa;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px}
+.cf-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:800}
+.cf-val.red{color:#c8372d}
+.cf-val.green{color:#2d8a5a}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:28px}
+.tbl th{text-align:left;padding:8px 6px;border-bottom:0.5px solid #e8e8e8;font-size:11px;text-transform:uppercase;letter-spacing:0.09em;color:#aaa;font-weight:400}
+.tbl th.r{text-align:right}
+.tbl td{padding:10px 6px;border-bottom:0.5px solid #f2f2f2;color:#888;font-weight:300}
+.tbl td.red{color:#c8372d;font-family:'Syne',sans-serif;font-weight:700;text-align:right}
+.tbl td.green{color:#2d8a5a;font-family:'Syne',sans-serif;font-weight:700;text-align:right}
+.tbl td.diff{color:#2d8a5a;font-family:'Syne',sans-serif;font-weight:700;text-align:right}
+.tbl tr:last-child td{border-bottom:none;color:#111;font-weight:500}
+.translation{background:#f8f8f8;border:0.5px solid #e8e8e8;border-radius:6px;padding:20px}
+.tr-title{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#aaa;margin-bottom:14px}
+.tr-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:0.5px solid #efefef}
+.tr-row:last-child{border-bottom:none}
+.tr-left{font-size:13px;color:#999;font-weight:300}
+.tr-right{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#2d8a5a}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Interaktivní kalkulačka</div>
+  <div class="headline">Kolik vás stojí <span>drahý fond.</span></div>
+  <div class="sub">Zadejte vaše čísla — výsledek se přepočítá okamžitě.</div>
+
+  <div class="inputs">
+    <div class="input-group">
+      <div class="input-label">Počáteční vklad</div>
+      <div class="input-row">
+        <input type="number" id="start" value="500000" min="0" step="10000">
+        <span class="input-unit">Kč</span>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-label">Měsíční vklad</div>
+      <div class="input-row">
+        <input type="number" id="monthly" value="5000" min="0" step="500">
+        <span class="input-unit">Kč</span>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-label">Doba: <span id="yearsLabel" style="color:#111;font-family:'Syne',sans-serif;font-weight:700">20</span> let</div>
+      <input type="range" id="years" min="5" max="40" value="20" step="1">
+      <div class="slider-row"><span>5 let</span><span>40 let</span></div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-box">
+      <div class="hb-label">Drahý fond (2,5 % TER)</div>
+      <div class="hb-val red" id="hConseq">—</div>
+      <div class="hb-sub">čistý výsledek</div>
+    </div>
+    <div class="hero-box">
+      <div class="hb-label">Nízkonákladové ETF (0,07 %)</div>
+      <div class="hb-val green" id="hXtb">—</div>
+      <div class="hb-sub">čistý výsledek</div>
+    </div>
+    <div class="hero-box diff">
+      <div class="hb-label">Zbytečně zaplatíte</div>
+      <div class="hb-val red" id="hDiff">—</div>
+      <div class="hb-sub">navíc na poplatcích</div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-top">
+      <div class="chart-card-title">Růst investice v čase</div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#2d8a5a"></div>Nízkonákladové ETF</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#c8372d"></div>Drahý fond</div>
+      </div>
+    </div>
+    <div class="chart-finals">
+      <div class="cf-box bad"><div class="cf-label">Drahý fond — výsledek</div><div class="cf-val red" id="cConseqFinal">—</div></div>
+      <div class="cf-box good"><div class="cf-label">ETF — výsledek</div><div class="cf-val green" id="cXtbFinal">—</div></div>
+    </div>
+    <div style="position:relative;height:240px">
+      <canvas id="mainChart"></canvas>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>Rok</th>
+        <th class="r">Drahý fond</th>
+        <th class="r">ETF</th>
+        <th class="r">Ušetříte</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <div class="translation">
+    <div class="tr-title" id="trTitle">Rozdíl — co to reálně je</div>
+    <div class="tr-row"><span class="tr-left">Nové auto (střední třída)</span><span class="tr-right" id="tr1">—</span></div>
+    <div class="tr-row"><span class="tr-left">Dovolená pro rodinu (50 000 Kč)</span><span class="tr-right" id="tr2">—</span></div>
+    <div class="tr-row"><span class="tr-left">Nový iPhone (15 000 Kč)</span><span class="tr-right" id="tr3">—</span></div>
+    <div class="tr-row"><span class="tr-left">Měsíční důchod navíc</span><span class="tr-right" id="tr4">—</span></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const MARKET_RETURN=0.09,TER_BAD=0.025,TER_GOOD=0.0007,ENTRY_BAD=0.04;
+let mainChart=null;
+
+function fmtShort(n){
+  if(n>=1000000) return (Math.round(n/100000)/10).toLocaleString('cs-CZ')+' M Kč';
+  return Math.round(n/1000)+' tis. Kč';
+}
+
+function calcYearly(start,monthly,years,ter,entry){
+  const arr=[];
+  let val=start*(1-entry);
+  const rate=(MARKET_RETURN-ter)/12;
+  for(let y=1;y<=years;y++){
+    for(let m=0;m<12;m++) val=val*(1+rate)+monthly;
+    arr.push(Math.round(val));
+  }
+  return arr;
+}
+
+function makeGrad(ctx,color){
+  const g=ctx.createLinearGradient(0,0,0,240);
+  g.addColorStop(0,color+'33');
+  g.addColorStop(1,color+'00');
+  return g;
+}
+
+function update(){
+  const start=Math.max(0,parseFloat(document.getElementById('start').value)||0);
+  const monthly=Math.max(0,parseFloat(document.getElementById('monthly').value)||0);
+  const years=parseInt(document.getElementById('years').value);
+  document.getElementById('yearsLabel').textContent=years;
+
+  const badArr=calcYearly(start,monthly,years,TER_BAD,ENTRY_BAD);
+  const goodArr=calcYearly(start,monthly,years,TER_GOOD,0);
+  const badFinal=badArr[badArr.length-1];
+  const goodFinal=goodArr[goodArr.length-1];
+  const diff=goodFinal-badFinal;
+
+  document.getElementById('hConseq').textContent=fmtShort(badFinal);
+  document.getElementById('hXtb').textContent=fmtShort(goodFinal);
+  document.getElementById('hDiff').textContent=fmtShort(diff);
+  document.getElementById('cConseqFinal').textContent=fmtShort(badFinal);
+  document.getElementById('cXtbFinal').textContent=fmtShort(goodFinal);
+
+  const labels=Array.from({length:years},(_,i)=>'R'+(i+1));
+
+  if(mainChart) mainChart.destroy();
+  const ctx=document.getElementById('mainChart').getContext('2d');
+  mainChart=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels,
+      datasets:[
+        {label:'ETF',data:goodArr,borderColor:'#2d8a5a',backgroundColor:makeGrad(ctx,'#2d8a5a'),fill:true,tension:0.4,pointRadius:0,borderWidth:2.5,order:1},
+        {label:'Drahý fond',data:badArr,borderColor:'#c8372d',backgroundColor:makeGrad(ctx,'#c8372d'),fill:true,tension:0.4,pointRadius:0,borderWidth:2.5,order:2}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'#fff',titleColor:'#111',bodyColor:'#666',
+          borderColor:'#e8e8e8',borderWidth:1,padding:12,
+          callbacks:{label:ctx=>' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('cs-CZ')+' Kč'}
+        }
+      },
+      scales:{
+        x:{ticks:{color:'#bbb',font:{size:11},maxTicksLimit:8},grid:{color:'#f0f0f0'}},
+        y:{ticks:{color:'#bbb',font:{size:11},callback:v=>Math.round(v/1000)+'k',maxTicksLimit:6},grid:{color:'#f0f0f0'}}
+      }
+    }
+  });
+
+  const tbody=document.getElementById('tableBody');
+  tbody.innerHTML='';
+  const milestones=[];
+  for(let y=5;y<=years;y+=5) milestones.push(y);
+  if(!milestones.includes(years)) milestones.push(years);
+  milestones.forEach(y=>{
+    const b=badArr[y-1],g=goodArr[y-1],d=g-b;
+    tbody.innerHTML+=`<tr>
+      <td>${y} let</td>
+      <td class="red">${fmtShort(b)}</td>
+      <td class="green">${fmtShort(g)}</td>
+      <td class="diff">+${fmtShort(d)}</td>
+    </tr>`;
+  });
+
+  document.getElementById('trTitle').textContent=fmtShort(diff)+' — co to reálně je';
+  document.getElementById('tr1').textContent=Math.floor(diff/700000)+'×';
+  document.getElementById('tr2').textContent=Math.floor(diff/50000)+'×';
+  document.getElementById('tr3').textContent=Math.floor(diff/15000)+'×';
+  document.getElementById('tr4').textContent=Math.round(diff/(years*12)).toLocaleString('cs-CZ')+' Kč / měsíc';
+}
+
+['start','monthly','years'].forEach(id=>document.getElementById(id).addEventListener('input',update));
+update();
+</script>
